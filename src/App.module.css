@@ -1,0 +1,6 @@
+@media (max-width: 450px) {
+    .toast{
+        width: calc(100% - 40px);
+        bottom: 10px;
+    }
+}
