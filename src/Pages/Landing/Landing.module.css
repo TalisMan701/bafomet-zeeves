@@ -1,0 +1,218 @@
+.input{
+    width: 100%;
+    max-width: 540px;
+    margin-right: 16px;
+    border-radius: 20px;
+    height: 50px;
+    background-color: #00040E;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 146px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 20px;
+    background: linear-gradient(89.78deg, #38B8DE 0.17%, #2DF7BD 99.81%);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    transition: all 0.2s ease;
+}
+
+.btn:hover{
+    box-shadow: 0px 4px 24px rgba(51, 217, 205, 0.4);
+}
+
+.container{
+    padding: 0 24px;
+    max-width: 1232px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.hello{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-bottom: 310px;
+}
+
+.helloTitle{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 98px;
+    line-height: 140%;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.helloContent{
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 8px 24px 1px rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(36px);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 782px;
+    height: 390px;
+}
+
+.backEllipse1{
+    position: absolute;
+    top: 132px;
+    left: -103px;
+    z-index: -1;
+}
+
+.backEllipse2{
+    position: absolute;
+    top: 0;
+    right: -42px;
+    z-index: -1;
+}
+
+.helloContentTitle{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 60px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+}
+
+.helloContentDesc{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 36px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 48px;
+}
+
+.helloContentInputs{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gallery{
+
+}
+
+.galleryTitle{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 68px;
+    line-height: 140%;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.galleryDesc{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 140%;
+    text-align: center;
+
+}
+
+.galleryText{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 100%;
+    text-align: center;
+    margin-top: 32px;
+}
+
+.galleryContent{
+    margin-top: 100px;
+    width: 100%;
+    position: relative;
+    height: 405px;
+}
+
+.galleryImg1{
+    width: 378px;
+    height: 378px;
+    opacity: 0.8;
+    box-shadow: inset 0px -1px 10px rgba(255, 255, 255, 0.14);
+    filter: drop-shadow(0px 10px 24px rgba(255, 255, 255, 0.24));
+    backdrop-filter: blur(10px);
+    border-radius: 36px;
+    position: absolute;
+    top: 0;
+   /* left: 50%;
+    transform: translate(-50%, 0);*/
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    z-index: 4;
+}
+
+.galleryImg2{
+    width: 330px;
+    height: 330px;
+    opacity: 0.6;
+    box-shadow: inset 0px -1px 10px rgba(255, 255, 255, 0.14);
+    filter: drop-shadow(0px 10px 24px rgba(255, 255, 255, 0.24));
+    backdrop-filter: blur(10px);
+    border-radius: 36px;
+    position: absolute;
+    top: 56px;
+    left: 133px;
+    z-index: 3;
+}
+
+.galleryImg3{
+    width: 330px;
+    height: 330px;
+    opacity: 0.6;
+    box-shadow: inset 0px -1px 10px rgba(255, 255, 255, 0.14);
+    filter: drop-shadow(0px 10px 24px rgba(255, 255, 255, 0.24));
+    backdrop-filter: blur(10px);
+    border-radius: 36px;
+    position: absolute;
+    top: 56px;
+    right: 133px;
+    z-index: 3;
+}
+
+.galleryImg4{
+    width: 278px;
+    height: 278px;
+    opacity: 0.4;
+    box-shadow: 0px 10px 24px rgba(255, 255, 255, 0.24), inset 0px -1px 10px rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(10px);
+    border-radius: 36px;
+    position: absolute;
+    top: 127px;
+    left: 0;
+    z-index: 2;
+}
+
+.galleryImg5{
+    width: 278px;
+    height: 278px;
+    opacity: 0.4;
+    box-shadow: inset 0px -1px 10px rgba(255, 255, 255, 0.14);
+    filter: drop-shadow(0px 10px 24px rgba(255, 255, 255, 0.24));
+    backdrop-filter: blur(10px);
+    border-radius: 36px;
+    position: absolute;
+    top: 127px;
+    right: 0;
+    z-index: 2;
+}

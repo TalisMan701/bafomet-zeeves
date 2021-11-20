@@ -1,3 +1,70 @@
+.dialog{
+    background: #00040E;
+    border-radius: 20px;
+    width: 378px;
+    height: 338px;
+    box-shadow: none;
+    border: none;
+}
+
+.dialog > div{
+    background: #00040E !important;
+    padding: 40px 20px !important;
+    border-radius: 20px;
+}
+
+.dialog > div:last-child{
+    display: none;
+}
+
+.dialogTitle{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 42px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+}
+
+.dialogDesc{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 140%;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+}
+
+.dialogBtnConfirm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    background: #33D2D1;
+    border-radius: 20px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-bottom: 36px;
+}
+
+.dialogBtnCansel{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+
+}
+
+
 @media (max-width: 450px) {
     .toast{
         width: calc(100% - 40px);

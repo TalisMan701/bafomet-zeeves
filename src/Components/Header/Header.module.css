@@ -1,0 +1,177 @@
+.header{
+    position: relative;
+    padding: 40px 0;
+    z-index: 10;
+}
+
+.container{
+    padding: 0 24px;
+    max-width: 1232px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.headerInner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.connectBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #2CF8BC;
+    border-radius: 20px;
+    width: 154px;
+    height: 48px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2CF8BC;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.connectBtn:hover{
+    background: rgba(94, 234, 212, 0.1);
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    background: #FFFFFF;
+    opacity: 0.37;
+    margin: 16px 0;
+    position: relative;
+}
+
+.dropDownContainer{
+    position: relative;
+}
+.downMenu{
+    width: 237px;
+    position: absolute;
+    top: 58px;
+    right: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(-8px);
+    opacity: 0;
+    height: 0;
+    z-index: 1;
+    background: #00040E;
+    border-radius: 20px;
+    padding: 24px
+}
+
+.downMenu.active{
+    height: 235px;
+    transform: translateY(0px);
+    opacity: 1;
+    box-shadow: 0px 10px 24px rgba(44, 248, 188, 0.16);
+}
+
+.tooltipTitle{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 4px;
+}
+
+.tooltipAddress{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.68);
+}
+
+.tooltipLink{
+    display: block;
+    position: relative;
+    width: 100%;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FFFFFF;
+    padding: 16px 0;
+    margin: 16px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.37);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.37);
+}
+
+.tooltipLink::after{
+    content: "";
+    height: 1px;
+    width: 0%;
+    position: absolute;
+    left: 0;
+    top: -1px;
+    background-color: #2CF8BC;
+    opacity: 1;
+    transition: all 0.4s ease;
+}
+
+.tooltipLink::before{
+    content: "";
+    height: 1px;
+    width: 0;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    background-color: #2CF8BC;
+    opacity: 1;
+    transition: all 0.4s ease;
+}
+
+.tooltipLink:hover::after{
+    width: 100%;
+}
+
+.tooltipLink:hover::before{
+    width: 100%;
+}
+
+.tooltipLogout{
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #FFFFFF;
+    height: 40px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.tooltipLogout:hover{
+    background-color: #ffffff17;
+}
+
+.logoInner{
+    display: flex;
+    align-items: center;
+}
+
+.logoImg{
+    width: 48px;
+    height: 48px;
+    margin-right: 16px;
+}
+
+.logoText{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
