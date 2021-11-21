@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import classes from './NftAccount.module.css'
-import { Skeleton } from 'primereact/skeleton';
 import {backAPI} from "../../api/api";
 
 const NftAccount = (props) => {
-    const [fetchHistory, setFetchHistory] = useState(true);
     const [pictures, setPictures] = useState([])
     useEffect(()=>{
         if(props.walletInfo)
@@ -49,7 +47,7 @@ const NftAccount = (props) => {
                             }
                         </div>
                         :
-                        <span>Подключите кошелек</span>
+                        <span className={classes.connect}>Connect wallet</span>
                     }
                 </div>
                 <img src="https://wellbe.s3.amazonaws.com/media/Ellipse_1.svg" alt="" className={classes.backEllipse1}/>
