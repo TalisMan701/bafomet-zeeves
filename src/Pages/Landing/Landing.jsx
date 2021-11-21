@@ -7,9 +7,44 @@ import {Button} from "primereact/button";
 import {ScrollTop} from "primereact/scrolltop";
 import Fade from 'react-reveal/Fade';
 import {Link} from "react-router-dom";
+import {backAPI} from "../../api/api";
 
 const Landing = (props) => {
 	const [helloText, setHelloText] = useState("")
+
+	const createImages = () => {
+		props.setFetchCreateNFT(true)
+		backAPI.createImages(helloText, props.walletInfo?.bech32)
+			.then(response => {
+				localStorage.setItem('idCreatingImages', response.data.id)
+				props.setCreatingImagesId(response.data.id)
+				props.setTimerId(setInterval(()=>{
+					backAPI.updateStatus(response.data.id)
+						.then(response=>{
+							if(response.status === 200){
+								props.setImages(response.data.result)
+								props.setGoClearInterval(true)
+								props.toast.current.show({severity: 'success', summary: 'Create images', detail: 'Was been success!'});
+							}
+							if(response.status === 201){
+								props.setImages([...response.data.result, {loading: true}])
+								props.setFetchCreateNFT(false)
+							}
+							if(response.status === 204){
+
+							}
+						})
+						.catch(error=>{
+
+						})
+				}, 20000))
+			})
+			.catch(error => {
+				props.toast.current.show({severity: 'error', summary: 'Create images', detail: 'Server error! Try again'});
+			})
+	}
+
+
 	return (
 		<>
 			<main>
@@ -28,7 +63,7 @@ const Landing = (props) => {
 								<Link
 									to={'/created_nft'}
 									className={classes.btn}
-									onClick={()=>{}}
+									onClick={createImages}
 								>
 									Create
 								</Link>
