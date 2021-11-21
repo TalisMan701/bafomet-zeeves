@@ -12,6 +12,7 @@ import "zeeves-auth-sdk-js";
 import Header from "./Components/Header/Header";
 import {Dialog} from "primereact/dialog";
 import CreatedNft from "./Pages/CreatedNFT/CreatedNFT";
+import NftAccount from "./Pages/NftAccount/NftAccount";
 
 
 function App(props) {
@@ -51,6 +52,7 @@ function App(props) {
 			<Header setShowConfirmWallet={setShowConfirmWallet} walletInfo={walletInfo} setWalletInfo={setWalletInfo}/>
 			<Route exact path={'/'} render={() => <Landing isMobile={isMobile} isTablet={isTablet}/>}/>
 			<Route path={'/created_nft'} render={() => <CreatedNft fetchCreateNFT={fetchCreateNFT} walletInfo={walletInfo} setShowConfirmWallet={setShowConfirmWallet} isMobile={isMobile} isTablet={isTablet}/>}/>
+			<Route path={'/my_nft'} render={() => <NftAccount walletInfo={walletInfo} />}/>
 			<Dialog
 				visible={showConfirmWallet}
 				onHide={() => setShowConfirmWallet(false)}

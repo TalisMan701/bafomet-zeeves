@@ -41,7 +41,7 @@ const Header = (props) => {
 											<div className={classes.tooltipTitle}>Connected wallet</div>
 											<div className={classes.tooltipAddress}>{`${props.walletInfo.bech32.substr(0,10)}...${props.walletInfo.bech32.substr(-7)}`}</div>
 											{/*<div className={classes.line}/>*/}
-											<Link to={'/'} className={classes.tooltipLink}>My NFTs</Link>
+											<Link to={'/my_nft'} className={classes.tooltipLink}>My NFTs</Link>
 											{/*<div className={classes.line}/>*/}
 											<div
 												className={classes.tooltipLogout}
