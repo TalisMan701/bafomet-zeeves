@@ -20,7 +20,7 @@ function App(props) {
 	const [isMobile, setIsMobile] = useState(false)
 	const [isTablet, setIsTablet] = useState(false)
 	const [showConfirmWallet, setShowConfirmWallet] = useState(false)
-	const [fetchCreateNFT, setFetchCreateNFT] = useState(true)
+	const [fetchCreateNFT, setFetchCreateNFT] = useState(false)
 	const [timerId, setTimerId] = useState(null)
 	const [images, setImages] = useState([])
 	const [goClearInterval, setGoClearInterval] = useState(false)

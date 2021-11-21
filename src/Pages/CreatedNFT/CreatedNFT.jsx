@@ -2,6 +2,8 @@ import React from 'react';
 import classes from './CreatedNFT.module.css'
 import LoadingCreateNft from "../LoadingCreateNFT/LoadingCreateNFT";
 import {Long, bytes,units, BN} from "@zilliqa-js/util";
+import {Link} from "react-router-dom";
+import {Skeleton} from "primereact/skeleton";
 const CreatedNft = (props) => {
 
 	const contractMint = "zil1xud3vqh66c4uk9ydpzv59cf3hln63prlz6rzfh";
@@ -72,19 +74,38 @@ const CreatedNft = (props) => {
 							<div className={classes.title}>We create some for you</div>
 							<div className={classes.desc}>Your request: Wild animals</div>
 							<div className={classes.items}>
-								<div className={classes.item}>
-									<img src="https://wellbe.s3.amazonaws.com/media/telegram-cloud-photo-size-2-5244491824373020085-y_1.jpg" alt="" className={classes.itemImg}/>
-									<div className={classes.itemBtns}>
-										<div className={classes.itemBtnLike}>
-											<i className="pi pi-heart"/>
+								{props.images?.map(image=>{
+									if(image?.loading){
+										return (
+											<div className={classes.item}>
+												<Skeleton width={334} height={334} borderRadius="36px"/>
+												{/*<div className={classes.itemImgLoading}>
+													<i className="pi pi-spin pi-spinner" style={{'fontSize': '3em'}}/>
+												</div>*/}
+												<div className={classes.itemBtns}>
+													<Skeleton width={56} height={56}/>
+													<Skeleton  width={256} height={56}/>
+												</div>
+											</div>
+										)
+									}
+									return(
+										<div className={classes.item}>
+											<img src={image.image_url} alt="" className={classes.itemImg}/>
+											<div className={classes.itemBtns}>
+												<div className={classes.itemBtnLike}>
+													<i className="pi pi-heart"/>
+												</div>
+												<div
+													onClick={()=>createNft(image.image_url)}
+													className={classes.itemBtnMint}
+												>Mint NFT</div>
+											</div>
 										</div>
-										<div
-											onClick={()=>createNft('url')}
-											className={classes.itemBtnMint}
-										>Mint NFT</div>
-									</div>
-								</div>
-								<div className={classes.item}>
+									)
+								})}
+
+								{/*<div className={classes.item}>
 									<img src="https://wellbe.s3.amazonaws.com/media/telegram-cloud-photo-size-2-5244491824373020085-y_1.jpg" alt="" className={classes.itemImg}/>
 									<div className={classes.itemBtns}>
 										<div className={classes.itemBtnLike}>
@@ -92,21 +113,12 @@ const CreatedNft = (props) => {
 										</div>
 										<div className={classes.itemBtnMint}>Mint NFT</div>
 									</div>
-								</div>
-								<div className={classes.item}>
-									<img src="https://wellbe.s3.amazonaws.com/media/telegram-cloud-photo-size-2-5244491824373020085-y_1.jpg" alt="" className={classes.itemImg}/>
-									<div className={classes.itemBtns}>
-										<div className={classes.itemBtnLike}>
-											<i className="pi pi-heart"/>
-										</div>
-										<div className={classes.itemBtnMint}>Mint NFT</div>
-									</div>
-								</div>
+								</div>*/}
 							</div>
 							<div className={classes.text}>If you don’t like this puctures, try again or change request</div>
 							<div className={classes.btns}>
-								<div className={classes.btnTry}>Try again</div>
-								<div className={classes.btnChange}>Change request</div>
+								{/*<div className={classes.btnTry}>Try again</div>*/}
+								<Link to={'/'} className={classes.btnChange}>Change request</Link>
 							</div>
 						</>
 					}

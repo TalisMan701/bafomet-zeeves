@@ -22,12 +22,13 @@ const Landing = (props) => {
 					backAPI.updateStatus(response.data.id)
 						.then(response=>{
 							if(response.status === 200){
-								props.setImages(response.data.results)
+								props.setImages(response.data.result)
 								props.setGoClearInterval(true)
 								props.toast.current.show({severity: 'success', summary: 'Create images', detail: 'Was been success!'});
 							}
 							if(response.status === 201){
-								//от 1 до 2 картинок
+								props.setImages([...response.data.result, {loading: true}])
+								props.setFetchCreateNFT(false)
 							}
 							if(response.status === 204){
 
