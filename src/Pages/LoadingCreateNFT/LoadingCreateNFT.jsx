@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import classes from './LoadingCreateNFT.module.css'
+import {ProgressBar} from "primereact/progressbar";
 const LoadingCreateNft = (props) => {
-	const [count, setCount] = useState(0)
+	/*const [count, setCount] = useState(0)
+	const [timeLoad, setTimeLoad] = useState(0)
 	useEffect(()=>{
 		const timerId = setInterval(()=>{
 			setCount(count + 1)
-		}, 3000)
+			setTimeLoad(timerId + 0.83)
+		}, 2500)
 		return ()=> {clearInterval(timerId)}
-	})
+	})*/
 
 	return (
 		<>
@@ -21,7 +24,8 @@ const LoadingCreateNft = (props) => {
 					>Connect wallet</div>
 				</>
 			}
-			<object type="image/svg+xml" data={`https://zeeves.wellbe.club/media/chatbotAnim.svg?${count}`} className={classes.img}/>
+			{/*<ProgressBar value={timeLoad} style={{width: "100%"}}/>*/}
+			<object type="image/svg+xml" data='http://zeeves.wellbe.club/media/chatbot_2.svg' className={classes.img}/>
 
 		</>
 	);
