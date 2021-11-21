@@ -20,7 +20,19 @@ function App(props) {
 	const [isMobile, setIsMobile] = useState(false)
 	const [isTablet, setIsTablet] = useState(false)
 	const [showConfirmWallet, setShowConfirmWallet] = useState(false)
-	const [fetchCreateNFT, setFetchCreateNFT] = useState(false)
+	const [fetchCreateNFT, setFetchCreateNFT] = useState(true)
+	const [timerId, setTimerId] = useState(null)
+	const [images, setImages] = useState([])
+	const [goClearInterval, setGoClearInterval] = useState(false)
+	const [idCreatingImagesId, setCreatingImagesId] = useState(false)
+
+	if(goClearInterval){
+		clearInterval(timerId)
+		setTimerId(null)
+		setGoClearInterval(false)
+		setFetchCreateNFT(false)
+		localStorage.removeItem('idCreatingImages')
+	}
 
 	let zeeves = window.Zeeves;
 	const connectZeeves = async () => {
@@ -49,8 +61,8 @@ function App(props) {
 	return (
 		<>
 			<Header setShowConfirmWallet={setShowConfirmWallet} walletInfo={walletInfo} setWalletInfo={setWalletInfo}/>
-			<Route exact path={'/'} render={() => <Landing isMobile={isMobile} isTablet={isTablet}/>}/>
-			<Route path={'/created_nft'} render={() => <CreatedNft fetchCreateNFT={fetchCreateNFT} walletInfo={walletInfo} setShowConfirmWallet={setShowConfirmWallet} isMobile={isMobile} isTablet={isTablet}/>}/>
+			<Route exact path={'/'} render={() => <Landing setCreatingImagesId={setCreatingImagesId} idCreatingImagesId={idCreatingImagesId} setImages={setImages} timerId={timerId} toast={toast} setTimerId={setTimerId} setGoClearInterval={setGoClearInterval} setFetchCreateNFT={setFetchCreateNFT} walletInfo={walletInfo} isMobile={isMobile} isTablet={isTablet}/>}/>
+			<Route path={'/created_nft'} render={() => <CreatedNft images={images} zeeves={zeeves} fetchCreateNFT={fetchCreateNFT} walletInfo={walletInfo} setShowConfirmWallet={setShowConfirmWallet} isMobile={isMobile} isTablet={isTablet}/>}/>
 			<Dialog
 				visible={showConfirmWallet}
 				onHide={() => setShowConfirmWallet(false)}
