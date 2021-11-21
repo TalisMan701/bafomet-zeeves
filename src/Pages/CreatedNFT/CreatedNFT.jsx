@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './CreatedNFT.module.css'
 import LoadingCreateNft from "../LoadingCreateNFT/LoadingCreateNFT";
 import {Long, bytes,units, BN} from "@zilliqa-js/util";
 import {Link} from "react-router-dom";
 import {Skeleton} from "primereact/skeleton";
+import {Dialog} from "primereact/dialog";
 const CreatedNft = (props) => {
+	const [showFetchMint, setShowFetchMint] = useState(false)
 
 	const contractMint = "zil1xud3vqh66c4uk9ydpzv59cf3hln63prlz6rzfh";
 
@@ -32,7 +34,7 @@ const CreatedNft = (props) => {
 					{
 						vname: 'token_uri',
 						type: 'String',
-						value: 'https://demo.nft.zeeves.io/d2de6a1049f111ec81d30242ac130003.jpg',
+						value: url,
 					}
 				],
 				{
@@ -127,6 +129,18 @@ const CreatedNft = (props) => {
 				<img src="https://wellbe.s3.amazonaws.com/media/Ellipse_1.svg" alt="" className={classes.backEllipse1}/>
 				<img src="https://wellbe.s3.amazonaws.com/media/Ellipse_2.svg" alt="" className={classes.backEllipse2}/>
 			</div>
+			<Dialog
+				visible={showFetchMint}
+				onHide={() => setShowFetchMint(false)}
+				className={classes.dialog}
+				showHeader={false}
+				onMaskClick={()=>{setShowFetchMint(false)}}
+			>
+				<i className="pi pi-spin pi-spinner" style={{'fontSize': '2em'}}/>
+				<div className={classes.dialogTitle}>Connect yor wallet</div>
+				<div className={classes.dialogDesc}>Connect your wallet with Zeeves to mint NFTs</div>
+				<div className={classes.dialogLink}></div>
+			</Dialog>
 		</main>
 	);
 };
