@@ -14,5 +14,8 @@ export const backAPI = {
 	},
 	getAllMyImages(owner){
 		return instance().get(`images/nft/list?owner=${owner}`)
+	},
+	mintImage(image_id){
+		return instance().get(`images/images/${image_id}/mint`)
 	}
 }
