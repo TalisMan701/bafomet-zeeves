@@ -2,7 +2,7 @@ import * as axios from "axios"
 
 const instance = () => axios.create({
 	withCredentials: true,
-	baseURL: `https://zeeves.wellbe.club/api/v1/`,
+	baseURL: `http://zeeves.wellbe.club/api/v1/`,
 });
 
 export const backAPI = {

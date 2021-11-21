@@ -32,6 +32,10 @@
     min-height: 390px;
 }
 
+.content span{
+    text-align: center;
+}
+
 .backEllipse1{
     position: absolute;
     top: 132px;
@@ -102,6 +106,15 @@
 
 .item{
     /*background: rgba(255, 255, 255, 0.1);*/
+}
+
+.connect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 60px;
 }
 
 /*
