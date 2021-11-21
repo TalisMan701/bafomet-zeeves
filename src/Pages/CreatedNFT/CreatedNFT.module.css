@@ -206,3 +206,22 @@
 .itemBtnMint:hover{
     box-shadow: 0px 4px 24px rgba(51, 217, 205, 0.4);
 }
+
+.dialog{
+    background: #00040E;
+    border-radius: 20px;
+    width: 378px;
+    height: 338px;
+    box-shadow: none;
+    border: none;
+}
+
+.dialog > div{
+    background: #00040E !important;
+    padding: 40px 20px !important;
+    border-radius: 20px;
+}
+
+.dialog > div:last-child{
+    display: none;
+}

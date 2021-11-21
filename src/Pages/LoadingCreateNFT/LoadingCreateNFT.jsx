@@ -1,6 +1,14 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './LoadingCreateNFT.module.css'
 const LoadingCreateNft = (props) => {
+	const [count, setCount] = useState(0)
+	useEffect(()=>{
+		const timerId = setInterval(()=>{
+			setCount(count + 1)
+		}, 3000)
+		return ()=> {clearInterval(timerId)}
+	})
+
 	return (
 		<>
 			<div className={classes.title}>We are working on your <br/> request</div>
@@ -13,7 +21,8 @@ const LoadingCreateNft = (props) => {
 					>Connect wallet</div>
 				</>
 			}
-			<img src="https://wellbe.s3.amazonaws.com/media/chatbot.svg" alt="" className={classes.img}/>
+			<object type="image/svg+xml" data={`https://zeeves.wellbe.club/media/chatbotAnim.svg?${count}`} className={classes.img}/>
+
 		</>
 	);
 };
