@@ -1,18 +1,31 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './CreatedNFT.module.css'
 import LoadingCreateNft from "../LoadingCreateNFT/LoadingCreateNFT";
 import {Long, bytes,units, BN} from "@zilliqa-js/util";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {Skeleton} from "primereact/skeleton";
 import {Dialog} from "primereact/dialog";
 const CreatedNft = (props) => {
 	const [showFetchMint, setShowFetchMint] = useState(false)
+	const [linkToTranz, setLinkToTranz] = useState('')
+	const [redirectSuccess, setRedirectSuccess] = useState(false)
+	const [timerId, setTimerId] = useState(null)
+	const [status, setStatus] = useState(0)
+
+	useEffect(()=>{
+		if(status === 3){
+			clearInterval(timerId)
+			setTimerId(null)
+			setRedirectSuccess(true)
+		}
+	}, [status])
 
 	const contractMint = "zil1xud3vqh66c4uk9ydpzv59cf3hln63prlz6rzfh";
 
 	const myGasPrice = units.toQa('2000', units.Units.Li);
 
 	const createNft = async (url) => {
+		setShowFetchMint(true)
 		const CHAIN_ID = 1;
 		const MSG_VERSION = 1;
 		const VER = bytes.pack(CHAIN_ID, MSG_VERSION);
@@ -48,10 +61,16 @@ const CreatedNft = (props) => {
 
 			// check the pending status
 			console.log(callTx)
-			const pendingStatus = await props.zeeves.blockchain.getTransactionStatus(callTx.ID);
+			setLinkToTranz(`https://viewblock.io/zilliqa/tx/${callTx.ID}`)
+			setTimerId(setInterval(async ()=>{
+				const pendingStatus = await props.zeeves.blockchain.getTransactionStatus(callTx.ID);
+				console.log(`Pending status is: `);
+				console.log(pendingStatus.status);
+				setStatus(pendingStatus.status)
+			},7000))
 
-			console.log(`Pending status is: `);
-			console.log(pendingStatus);
+			/*console.log(`Pending status is: `);
+			console.log(pendingStatus);*/
 
 			// process confirm
 			console.log(`The transaction id is:`, callTx.ID);
@@ -64,6 +83,12 @@ const CreatedNft = (props) => {
 			console.log(err);
 		}
 
+	}
+
+	if(redirectSuccess){
+		return (
+			<Redirect to={'/success'}/>
+		)
 	}
 
 	return (
@@ -120,7 +145,7 @@ const CreatedNft = (props) => {
 							<div className={classes.text}>If you don’t like this puctures, try again or change request</div>
 							<div className={classes.btns}>
 								{/*<div className={classes.btnTry}>Try again</div>*/}
-								<Link to={'/'} className={classes.btnChange}>Change request</Link>
+								<Link to={linkToTranz} className={classes.btnChange}>Change request</Link>
 							</div>
 						</>
 					}
@@ -134,12 +159,11 @@ const CreatedNft = (props) => {
 				onHide={() => setShowFetchMint(false)}
 				className={classes.dialog}
 				showHeader={false}
-				onMaskClick={()=>{setShowFetchMint(false)}}
 			>
-				<i className="pi pi-spin pi-spinner" style={{'fontSize': '2em'}}/>
-				<div className={classes.dialogTitle}>Connect yor wallet</div>
-				<div className={classes.dialogDesc}>Connect your wallet with Zeeves to mint NFTs</div>
-				<div className={classes.dialogLink}></div>
+				<i className="pi pi-spin pi-spinner" style={{'fontSize': '5em', color: "#2CF8BC"}}/>
+				<div className={classes.dialogTitle}>Waiting</div>
+				<div className={classes.dialogDesc}>Mint your Picture</div>
+				<Link to={'/'} className={classes.dialogLink}>Transaction</Link>
 			</Dialog>
 		</main>
 	);
