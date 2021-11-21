@@ -128,8 +128,14 @@ const CreatedNft = (props) => {
 												</div>
 												<div
 													onClick={()=>{
-														setImageSel(image)
-														createNft(image.image_url)
+														if(props.walletInfo){
+															setImageSel(image)
+															createNft(image.image_url)
+														}else{
+															props.setShowConfirmWallet(true)
+															props.toast.current.show({severity: 'error', summary: 'Mint picture', detail: 'Connect wallet'});
+														}
+
 													}}
 													className={classes.itemBtnMint}
 												>Mint NFT</div>

@@ -129,8 +129,14 @@ const NftAccount = (props) => {
                                                     ? <span className={classes.minted}>Minted</span>
                                                     :<button
                                                         onClick={()=>{
-                                                            setImageSel(picture)
-                                                            createNft(picture.image_url)
+                                                            if(props.walletInfo){
+                                                                setImageSel(picture)
+                                                                createNft(picture.image_url)
+                                                            }else{
+                                                                props.setShowConfirmWallet(true)
+                                                                props.toast.current.show({severity: 'error', summary: 'Mint picture', detail: 'Connect wallet'});
+                                                            }
+
                                                         }}
                                                         className={classes.mintBtn}
                                                     >Mint</button>}

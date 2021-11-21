@@ -63,10 +63,10 @@ function App(props) {
 	return (
 		<>
 			<Header setShowConfirmWallet={setShowConfirmWallet} walletInfo={walletInfo} setWalletInfo={setWalletInfo}/>
-			<Route path={'/my_nft'} render={() => <NftAccount walletInfo={walletInfo} zeeves={zeeves}/>}/>
+			<Route path={'/my_nft'} render={() => <NftAccount walletInfo={walletInfo} zeeves={zeeves} setShowConfirmWallet={setShowConfirmWallet} toast={toast}/>}/>
 			<Route path={'/success'} render={() => <Success/>}/>
 			<Route exact path={'/'} render={() => <Landing setHelloText={setHelloText} helloText={helloText} setCreatingImagesId={setCreatingImagesId} idCreatingImagesId={idCreatingImagesId} setImages={setImages} timerId={timerId} toast={toast} setTimerId={setTimerId} setGoClearInterval={setGoClearInterval} setFetchCreateNFT={setFetchCreateNFT} walletInfo={walletInfo} isMobile={isMobile} isTablet={isTablet}/>}/>
-			<Route path={'/created_nft'} render={() => <CreatedNft helloText={helloText} images={images} zeeves={zeeves} fetchCreateNFT={fetchCreateNFT} walletInfo={walletInfo} setShowConfirmWallet={setShowConfirmWallet} isMobile={isMobile} isTablet={isTablet}/>}/>
+			<Route path={'/created_nft'} render={() => <CreatedNft helloText={helloText} images={images} zeeves={zeeves} fetchCreateNFT={fetchCreateNFT} walletInfo={walletInfo} setShowConfirmWallet={setShowConfirmWallet} isMobile={isMobile} toast={toast} isTablet={isTablet}/>}/>
 
 			<Dialog
 				visible={showConfirmWallet}
