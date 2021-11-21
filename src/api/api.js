@@ -12,7 +12,7 @@ export const backAPI = {
 	updateStatus(id){
 		return instance().get(`images/nft/${id}`)
 	},
-	getAllMyImages(owner){
-		return instance().get(`images/nft/list?owner=${owner}`)
+	getAllMyPicture(owner){
+		return instance().get(`images/images/list?owner=${owner}`)
 	}
 }
