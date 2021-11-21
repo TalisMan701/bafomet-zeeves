@@ -26,6 +26,7 @@ function App(props) {
 	const [images, setImages] = useState([])
 	const [goClearInterval, setGoClearInterval] = useState(false)
 	const [idCreatingImagesId, setCreatingImagesId] = useState(false)
+	const [helloText, setHelloText] = useState("")
 
 	if(goClearInterval){
 		clearInterval(timerId)
@@ -62,10 +63,10 @@ function App(props) {
 	return (
 		<>
 			<Header setShowConfirmWallet={setShowConfirmWallet} walletInfo={walletInfo} setWalletInfo={setWalletInfo}/>
-			<Route path={'/my_nft'} render={() => <NftAccount walletInfo={walletInfo} />}/>
+			<Route path={'/my_nft'} render={() => <NftAccount walletInfo={walletInfo} zeeves={zeeves}/>}/>
 			<Route path={'/success'} render={() => <Success/>}/>
-			<Route exact path={'/'} render={() => <Landing setCreatingImagesId={setCreatingImagesId} idCreatingImagesId={idCreatingImagesId} setImages={setImages} timerId={timerId} toast={toast} setTimerId={setTimerId} setGoClearInterval={setGoClearInterval} setFetchCreateNFT={setFetchCreateNFT} walletInfo={walletInfo} isMobile={isMobile} isTablet={isTablet}/>}/>
-			<Route path={'/created_nft'} render={() => <CreatedNft images={images} zeeves={zeeves} fetchCreateNFT={fetchCreateNFT} walletInfo={walletInfo} setShowConfirmWallet={setShowConfirmWallet} isMobile={isMobile} isTablet={isTablet}/>}/>
+			<Route exact path={'/'} render={() => <Landing setHelloText={setHelloText} helloText={helloText} setCreatingImagesId={setCreatingImagesId} idCreatingImagesId={idCreatingImagesId} setImages={setImages} timerId={timerId} toast={toast} setTimerId={setTimerId} setGoClearInterval={setGoClearInterval} setFetchCreateNFT={setFetchCreateNFT} walletInfo={walletInfo} isMobile={isMobile} isTablet={isTablet}/>}/>
+			<Route path={'/created_nft'} render={() => <CreatedNft helloText={helloText} images={images} zeeves={zeeves} fetchCreateNFT={fetchCreateNFT} walletInfo={walletInfo} setShowConfirmWallet={setShowConfirmWallet} isMobile={isMobile} isTablet={isTablet}/>}/>
 
 			<Dialog
 				visible={showConfirmWallet}

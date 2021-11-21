@@ -5,15 +5,18 @@ import {Long, bytes,units, BN} from "@zilliqa-js/util";
 import {Link, Redirect} from "react-router-dom";
 import {Skeleton} from "primereact/skeleton";
 import {Dialog} from "primereact/dialog";
+import {backAPI} from "../../api/api";
 const CreatedNft = (props) => {
 	const [showFetchMint, setShowFetchMint] = useState(false)
 	const [linkToTranz, setLinkToTranz] = useState('')
 	const [redirectSuccess, setRedirectSuccess] = useState(false)
 	const [timerId, setTimerId] = useState(null)
 	const [status, setStatus] = useState(0)
+	const [imageSel, setImageSel] = useState(null)
 
 	useEffect(()=>{
 		if(status === 3){
+			backAPI.mintImage(imageSel.id)
 			clearInterval(timerId)
 			setTimerId(null)
 			setRedirectSuccess(true)
@@ -99,7 +102,7 @@ const CreatedNft = (props) => {
 						<LoadingCreateNft walletInfo={props.walletInfo} setShowConfirmWallet={props.setShowConfirmWallet}/>:
 						<>
 							<div className={classes.title}>We create some for you</div>
-							<div className={classes.desc}>Your request: Wild animals</div>
+							<div className={classes.desc}>Your request: {props.helloText}</div>
 							<div className={classes.items}>
 								{props.images?.map(image=>{
 									if(image?.loading){
@@ -124,7 +127,10 @@ const CreatedNft = (props) => {
 													<i className="pi pi-heart"/>
 												</div>
 												<div
-													onClick={()=>createNft(image.image_url)}
+													onClick={()=>{
+														setImageSel(image)
+														createNft(image.image_url)
+													}}
 													className={classes.itemBtnMint}
 												>Mint NFT</div>
 											</div>
@@ -145,7 +151,11 @@ const CreatedNft = (props) => {
 							<div className={classes.text}>If you don’t like this puctures, try again or change request</div>
 							<div className={classes.btns}>
 								{/*<div className={classes.btnTry}>Try again</div>*/}
-								<Link to={linkToTranz} className={classes.btnChange}>Change request</Link>
+								<a
+									href={linkToTranz}
+									target="_blank"
+									className={classes.btnChange}
+								>Change request</a>
 							</div>
 						</>
 					}
@@ -163,7 +173,7 @@ const CreatedNft = (props) => {
 				<i className="pi pi-spin pi-spinner" style={{'fontSize': '5em', color: "#2CF8BC"}}/>
 				<div className={classes.dialogTitle}>Waiting</div>
 				<div className={classes.dialogDesc}>Mint your Picture</div>
-				<Link to={'/'} className={classes.dialogLink}>Transaction</Link>
+				<Link to={linkToTranz} className={classes.dialogLink}>Transaction</Link>
 			</Dialog>
 		</main>
 	);

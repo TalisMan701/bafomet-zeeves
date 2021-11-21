@@ -18,6 +18,5 @@ export const backAPI = {
 	},
 	mintImage(image_id){
 		return instance().get(`images/images/${image_id}/mint`)
-
 	}
 }

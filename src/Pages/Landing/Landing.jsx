@@ -6,16 +6,17 @@ import {InputText} from "primereact/inputtext";
 import {Button} from "primereact/button";
 import {ScrollTop} from "primereact/scrolltop";
 import Fade from 'react-reveal/Fade';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {backAPI} from "../../api/api";
 
 const Landing = (props) => {
-	const [helloText, setHelloText] = useState("")
+	const [redirect, setRedirect] = useState(false)
 
 	const createImages = () => {
 		props.setFetchCreateNFT(true)
-		backAPI.createImages(helloText, props.walletInfo?.bech32)
+		backAPI.createImages(props.helloText, props.walletInfo?.bech32)
 			.then(response => {
+				setRedirect(true)
 				localStorage.setItem('idCreatingImages', response.data.id)
 				props.setCreatingImagesId(response.data.id)
 				props.setTimerId(setInterval(()=>{
@@ -37,13 +38,18 @@ const Landing = (props) => {
 						.catch(error=>{
 
 						})
-				}, 20000))
+				}, 10000))
 			})
 			.catch(error => {
-				props.toast.current.show({severity: 'error', summary: 'Create images', detail: 'Server error! Try again'});
+				props.toast.current.show({severity: 'error', summary: 'Create images', detail: 'This works was been mint'});
 			})
 	}
 
+	if(redirect){
+		return (
+			<Redirect to={'/created_nft'}/>
+		)
+	}
 
 	return (
 		<>
@@ -56,17 +62,16 @@ const Landing = (props) => {
 							<div className={classes.helloContentDesc}>Describe the desire result</div>
 							<div className={classes.helloContentInputs}>
 								<InputText
-									value={helloText}
-									onChange={(e) => setHelloText(e.target.value)}
+									value={props.helloText}
+									onChange={(e) => props.setHelloText(e.target.value)}
 									className={classes.input}
 								/>
-								<Link
-									to={'/created_nft'}
+								<div
 									className={classes.btn}
 									onClick={createImages}
 								>
 									Create
-								</Link>
+								</div>
 							</div>
 						</div>
 						<img src="https://wellbe.s3.amazonaws.com/media/Ellipse_1.svg" alt="" className={classes.backEllipse1}/>
